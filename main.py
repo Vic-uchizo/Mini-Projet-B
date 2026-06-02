@@ -1,16 +1,16 @@
 # =============================================================================
 # Mini-Projet B - Integration numerique
-# Fichier principal : definit le polynome et appelle les methodes d'integration
+# Fichier principal : definit le polynome et appelle toutes les methodes
 # =============================================================================
 
-# On importe nos deux methodes des trapezes.
 from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
+from simpson import calculer_simpson_python, calculer_simpson_numpy
+from moindre_rectangle import calculer_moindre_rectangle_python
 
 
 # -----------------------------------------------------------------------------
 # Coefficients du polynome f(x) = a + b*x + c*x^2 + d*x^3
-# (a modifier selon les valeurs de l'enonce)
 # -----------------------------------------------------------------------------
 a = 1
 b = 2
@@ -19,11 +19,7 @@ d = 4
 
 
 def polynome(x):
-    """
-    Notre fonction a integrer : un polynome de 3e ordre.
-    Elle ne prend qu'un seul argument x ; les coefficients a, b, c, d
-    sont pris dans les variables definies ci-dessus.
-    """
+    """Fonction a integrer : un polynome de 3e ordre."""
     return a + b * x + c * x**2 + d * x**3
 
 
@@ -31,19 +27,16 @@ def polynome(x):
 # Programme principal
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    # Bornes de l'intervalle d'integration.
-    # /!\ On NE les appelle PAS a et b : ces noms servent deja aux coefficients
-    #     du polynome ci-dessus. On utilise donc x_min et x_max pour eviter
-    #     toute confusion.
+    # Bornes de l'intervalle (pas a/b : deja pris par les coefficients).
     x_min = 0
     x_max = 3
 
-    # Pas de resolution : nombre de segments.
+    # Nombre de segments.
     n = 10
 
-    # On passe la fonction "polynome" en argument (sans les parentheses !).
-    resultat_python = integrale_trapeze_python(x_min, x_max, polynome, n)
-    resultat_numpy = integrale_trapeze_numpy(x_min, x_max, polynome, n)
-
-    print("Trapezes (Python de base) :", resultat_python)
-    print("Trapezes (NumPy)          :", resultat_numpy)
+    # On passe "polynome" en argument a chaque methode (sans parentheses).
+    print("Rectangles (Python) :", calculer_moindre_rectangle_python(x_min, x_max, polynome, n))
+    print("Trapezes   (Python) :", integrale_trapeze_python(x_min, x_max, polynome, n))
+    print("Trapezes   (NumPy)  :", integrale_trapeze_numpy(x_min, x_max, polynome, n))
+    print("Simpson    (Python) :", calculer_simpson_python(x_min, x_max, polynome, n))
+    print("Simpson    (NumPy)  :", calculer_simpson_numpy(x_min, x_max, polynome, n))
