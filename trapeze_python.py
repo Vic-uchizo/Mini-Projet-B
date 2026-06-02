@@ -1,5 +1,4 @@
 # =============================================================================
-# Mini-Projet B - Integration numerique
 # Methode des TRAPEZES, codee en Python de base (sans NumPy)
 # =============================================================================
 # Objectif : approximer l'aire sous la courbe d'une fonction f sur [a, b].
@@ -10,7 +9,7 @@
 # =============================================================================
 
 
-def integrale_trapeze(a, b, f, n):
+def integrale_trapeze_python(a, b, f, n):
    
     # Largeur (constante) de chaque segment.
     h = (b - a) / n

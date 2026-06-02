@@ -3,8 +3,9 @@
 # Fichier principal : definit le polynome et appelle les methodes d'integration
 # =============================================================================
 
-# On importe notre methode des trapezes (Python de base).
-from trapeze_python import integrale_trapeze
+# On importe nos deux methodes des trapezes.
+from trapeze_python import integrale_trapeze_python
+from trapeze_numpy import integrale_trapeze_numpy
 
 
 # -----------------------------------------------------------------------------
@@ -41,7 +42,8 @@ if __name__ == "__main__":
     n = 10
 
     # On passe la fonction "polynome" en argument (sans les parentheses !).
-    # integrale_trapeze va l'appeler elle-meme : polynome(x_gauche), etc.
-    resultat = integrale_trapeze(x_min, x_max, polynome, n)
+    resultat_python = integrale_trapeze_python(x_min, x_max, polynome, n)
+    resultat_numpy = integrale_trapeze_numpy(x_min, x_max, polynome, n)
 
-    print("Integrale approchee (trapezes, Python de base) :", resultat)
+    print("Trapezes (Python de base) :", resultat_python)
+    print("Trapezes (NumPy)          :", resultat_numpy)
