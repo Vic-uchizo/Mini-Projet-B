@@ -1,17 +1,5 @@
 import numpy as np
 
-def calculer_f(polynome, x):
-    """
-    Évalue un polynôme de degré 3 (ou moins) pour une valeur x.
-    Fonctionne aussi bien avec un 'x' unique (float) qu'avec un tableau (numpy array).
-    
-    Arguments :
-    polynome -- Liste contenant exactement 4 coefficients [a0, a1, a2, a3].
-    x        -- Point(s) d'évaluation.
-    """
-    f = polynome[0] + polynome[1]*x + polynome[2]*x*x + polynome[3]*x*x*x
-    return f
-
 # Méthode python
 
 def calculer_simpson_python(a, b, polynome, n):
@@ -30,9 +18,9 @@ def calculer_simpson_python(a, b, polynome, n):
     
     for _ in range(n):
         # Application de la formule de Simpson sur le sous-intervalle actuel
-        aire += (intervalle / 6) * (calculer_f(polynome, position) + 
-                                    4 * calculer_f(polynome, (position + intervalle / 2)) + 
-                                    calculer_f(polynome, (position + intervalle)))
+        aire += (intervalle / 6) * (polynome(position) + 
+                                    4 * polynome(position + intervalle / 2) + 
+                                    polynome(position + intervalle))
         position += intervalle
 
     return aire
@@ -50,7 +38,7 @@ def calculer_simpson_numpy(a, b, polynome, n):
     position = np.linspace(a, b, 2*n + 1)
 
     # Évaluation du polynôme sur toute la grille en une seule opération (broadcasting)
-    f = calculer_f(polynome, position)
+    f = polynome(position)
 
     # Application des poids de Simpson via le découpage du tableau (slicing) :
     # f[0] et f[-1] : extrémités (poids 1)
