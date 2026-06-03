@@ -7,6 +7,7 @@ from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
 from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy,calculer_methode_analytique
+from graph import tracer_tous_les_graphiques
 
 
 # -----------------------------------------------------------------------------
@@ -45,3 +46,6 @@ if __name__ == "__main__":
     print("Trapezes   (NumPy)  :", integrale_trapeze_numpy(x_min, x_max, polynome, n))
     print("Simpson    (Python) :", calculer_simpson_python(x_min, x_max, polynome, n))
     print("Simpson    (NumPy)  :", calculer_simpson_numpy(x_min, x_max, polynome, n))
+
+    # Tracer les graphiques de comparaison (convergence, performance, erreur).
+    tracer_tous_les_graphiques(polynome, x_min, x_max)
