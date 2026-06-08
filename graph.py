@@ -65,8 +65,9 @@ def erreur(fonction, polynome, x_min, x_max, n):
     """Ecart absolu entre la methode et la valeur exacte, pour n segments."""
     exacte = calculer_methode_analytique(polynome, x_min, x_max)
     approx = fonction(x_min, x_max, polynome, n)
-    return abs(approx - exacte)
-
+    diff = abs(approx - exacte)
+    # Si la diff est inférieure à la précision machine, on la bloque à 1e-15
+    return max(diff, 1e-15)
 
 # =============================================================================
 # GRAPHIQUE 1 : Convergence (erreur en fonction de n)
