@@ -8,23 +8,10 @@ from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
 from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy
 from graph import tracer_tous_les_graphiques
-from performance import calculer_methode_analytique
+from performance import calculer_methode_analytique, polynome
 
 
-# -----------------------------------------------------------------------------
-# Coefficients du polynome f(x) = a + b*x + c*x^2 + d*x^3
-# -----------------------------------------------------------------------------
-a = 1
-b = 2
-c = 3
-d = 4
 
-
-def polynome(x):
-    """Fonction a integrer : un polynome de 3e ordre."""
-    return a + b * x + c * x**2 + d * x**3
-
-polynome.coeff=[a,b,c,d] #pour faciulement recuperer les coefficient dans les fonctions
 
 # -----------------------------------------------------------------------------
 # Programme principal
@@ -36,6 +23,16 @@ if __name__ == "__main__":
 
     # Nombre de segments.
     n = 10
+
+    # -----------------------------------------------------------------------------
+    # Coefficients du polynome f(x) = a + b*x + c*x^2 + d*x^3
+    # -----------------------------------------------------------------------------
+    a = 1
+    b = 2
+    c = 3
+    d = 4
+
+    polynome.coeff=[a,b,c,d] #pour faciulement recuperer les coefficient dans les fonctions
 
     #Resultats reels de l'integrale
     print("Resultats analytiques : " ,calculer_methode_analytique(polynome, x_min, x_max))
