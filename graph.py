@@ -38,14 +38,14 @@ def scipy_simpson(inf, sup, f, n):
 # Liste de l'inventaire des methodes : (nom, fonction)
 # -----------------------------------------------------------------------------
 methodes = [
-    #("Rectangles (Python)", calculer_moindre_rectangle_python),
+    ("Rectangles (Python)", calculer_moindre_rectangle_python),
     ("Rectangles (NumPy)",  calculer_moindre_rectangle_numpy),
     ("Trapezes (Python)",   integrale_trapeze_python),
     ("Trapezes (NumPy)",    integrale_trapeze_numpy),
     ("Simpson (Python)",    calculer_simpson_python),
-    #("Simpson (NumPy)",     calculer_simpson_numpy),
-    #("Trapezes (scipy)",    scipy_trapeze),
-    #("Simpson (scipy)",     scipy_simpson),
+    ("Simpson (NumPy)",     calculer_simpson_numpy),
+    ("Trapezes (scipy)",    scipy_trapeze),
+    ("Simpson (scipy)",     scipy_simpson),
 ]
 
 # Valeurs de n testees (echelle logarithmique : 1, 2, 5, 10, ... 1000).
