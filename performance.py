@@ -8,8 +8,9 @@ def calculer_methode_analytique(f, inf, sup):
     return F_sup - F_inf
 
 def mesurer_temps(fonction, x_min, x_max, polynome, n):
-    temps = timeit(lambda: fonction(x_min, x_max, polynome, n), number=100)    
-    return temps
+    nb_executions = 100
+    temps_total = timeit(lambda: fonction(x_min, x_max, polynome, n), number=nb_executions)
+    return temps_total / nb_executions  # temps moyen d'UNE execution (en secondes)
 
 # -----------------------------------------------------------------------------
 # Fonctions erreur entre les methodes et la valeur exacte

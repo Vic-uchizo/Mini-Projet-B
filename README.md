@@ -1,7 +1,7 @@
 # Mini-Projet B — Analyse numérique : intégration
 
 **Cours :** MGA802 — Introduction à la programmation avec Python
-**Équipe :** *Nnio Kilian Victor*
+**Équipe :** *Nino Kilian Victor*
 
 ## Description du projet
 

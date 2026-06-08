@@ -44,5 +44,5 @@ def calculer_simpson_numpy(a, b, polynome, n):
     # f[0] et f[-1] : extrémités (poids 1)
     # f[1::2]       : tous les indices impairs = les milieux (poids 4)
     # f[2:-1:2]     : tous les indices pairs internes = les frontières (poids 2)
-    aire = ((b-a)/n)/6 * (f[0] + f[-1] + 4 * sum(f[1::2]) + 2 * sum(f[2:-1:2]))
+    aire = ((b-a)/n)/6 * (f[0] + f[-1] + 4 * np.sum(f[1::2]) + 2 * np.sum(f[2:-1:2]))
     return aire
