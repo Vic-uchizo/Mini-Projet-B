@@ -17,8 +17,8 @@ def menu_console():
         c = int(input("-> Entez c : "))
         d = int(input("-> Entez d : "))
 
-        polynome.coeff=[a,b,c,d] # Pour facilement recuperer les coefficient dans les fonctions
-        print(f"\nPolynôme configuré :\n{polynome.coeff}")
+        poly = [a,b,c,d] # Pour facilement recuperer les coefficient dans les fonctions
+        print(f"\nPolynôme configuré :\n{poly}")
         
         # 2. Saisie des bornes
         print("\nSaisie des bornes d'intégration :")

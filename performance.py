@@ -8,14 +8,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 
-# -----------------------------------------------------------------------------
-# Coefficients du polynome f(x) = a + b*x + c*x^2 + d*x^3
-# -----------------------------------------------------------------------------
-a = 1
-b = 2
-c = 3
-d = 4
-
 
 def polynome(x):
     """Fonction a integrer : un polynome de 3e ordre."""
