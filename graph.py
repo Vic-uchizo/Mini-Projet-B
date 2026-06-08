@@ -14,7 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid, simpson
 
-# Mesure dees performances
+# Mesure des performances
 from performance import mesurer_temps, erreur
 
 # On reutilise les fonctions deja codees dans les autres fichiers.
@@ -23,7 +23,6 @@ from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
 from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy
 
-
 # -----------------------------------------------------------------------------
 # On utilise les fonctions de base de python pour intégrer pour pouvoir les comparer aux notres
 # -----------------------------------------------------------------------------
@@ -31,13 +30,9 @@ def scipy_trapeze(inf, sup, f, n):
     x = np.linspace(inf, sup, n + 1)
     return trapezoid(f(x), x)
 
-
 def scipy_simpson(inf, sup, f, n):
     x = np.linspace(inf, sup, 2 * n + 1)  # nb impair de noeuds pour nombre paire d'intervalles 
     return simpson(f(x), x=x)
-
-
-
 
 # -----------------------------------------------------------------------------
 # Liste de l'inventaire des methodes : (nom, fonction)
@@ -129,5 +124,6 @@ def tracer_tous_les_graphiques(polynome, x_min, x_max):
     graphique_convergence(polynome, x_min, x_max)
     graphique_performance(polynome, x_min, x_max)
     graphique_erreur_par_methode(polynome, x_min, x_max)
+    print("Les échelles log sont plafonées à 10e-15 pour eviter d'avoir un '0' à l'infini")
     print("Termine.")
     plt.show()
