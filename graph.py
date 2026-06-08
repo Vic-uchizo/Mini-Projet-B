@@ -14,8 +14,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid, simpson
 
-# Mesure du temps : on reutilise la fonction du fichier du collegue.
-from performance import calculer_methode_analytique, mesurer_temps
+# Mesure dees performances
+from performance import mesurer_temps, erreur
 
 # On reutilise les fonctions deja codees dans les autres fichiers.
 from trapeze_python import integrale_trapeze_python
@@ -55,19 +55,6 @@ methodes = [
 
 # Valeurs de n testees (echelle logarithmique : 1, 2, 5, 10, ... 1000).
 liste_n = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-
-
-# -----------------------------------------------------------------------------
-# Fonctions erreur entre les methodes et la valeur exacte
-# -----------------------------------------------------------------------------
-
-def erreur(fonction, polynome, x_min, x_max, n):
-    """Ecart absolu entre la methode et la valeur exacte, pour n segments."""
-    exacte = calculer_methode_analytique(polynome, x_min, x_max)
-    approx = fonction(x_min, x_max, polynome, n)
-    diff = abs(approx - exacte)
-    # Si la diff est inférieure à la précision machine, on la bloque à 1e-15
-    return max(diff, 1e-15)
 
 # =============================================================================
 # GRAPHIQUE 1 : Convergence (erreur en fonction de n)

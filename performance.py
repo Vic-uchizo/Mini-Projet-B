@@ -31,3 +31,15 @@ def calculer_methode_analytique(f, inf, sup):
 def mesurer_temps(fonction, x_min, x_max, polynome, n):
     temps = timeit(lambda: fonction(x_min, x_max, polynome, n), number=100)    
     return temps
+
+# -----------------------------------------------------------------------------
+# Fonctions erreur entre les methodes et la valeur exacte
+# -----------------------------------------------------------------------------
+
+def erreur(fonction, polynome, x_min, x_max, n):
+    """Ecart absolu entre la methode et la valeur exacte, pour n segments."""
+    exacte = calculer_methode_analytique(polynome, x_min, x_max)
+    approx = fonction(x_min, x_max, polynome, n)
+    diff = abs(approx - exacte)
+    # Si la diff est inférieure à la précision machine, on la bloque à 1e-15
+    return max(diff, 1e-15)
