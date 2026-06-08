@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid, simpson
 
 # Mesure du temps : on reutilise la fonction du fichier du collegue.
-from performance import mesurer_temps
+from performance import calculer_methode_analytique
 
 # On reutilise les fonctions deja codees dans les autres fichiers.
 from trapeze_python import integrale_trapeze_python
@@ -23,8 +23,7 @@ from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
 from moindre_rectangle import (
     calculer_moindre_rectangle_python,
-    calculer_moindre_rectangle_numpy,
-    calculer_methode_analytique,
+    calculer_moindre_rectangle_numpy
 )
 
 

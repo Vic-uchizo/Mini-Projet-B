@@ -129,3 +129,10 @@ df_temps = pd.DataFrame({
 })
 
 
+
+def calculer_methode_analytique(f, inf, sup):
+    """Valeur exacte de l'integrale du polynome a + b*x + c*x^2 + d*x^3."""
+    a,b,c,d=f.coeff
+    F_sup = a*sup + b*(sup**2)/2 + c*(sup**3)/3 + d*(sup**4)/4
+    F_inf = a*inf + b*(inf**2)/2 + c*(inf**3)/3 + d*(inf**4)/4
+    return F_sup - F_inf
