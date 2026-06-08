@@ -1,43 +1,28 @@
-# Mini-Projet B — Analyse numérique : intégration
+# Mini-Projet B — Intégration numérique
 
 **Cours :** MGA802 — Introduction à la programmation avec Python
-**Équipe :** *Nino Kilian Victor*
+**Équipe :** Nino, Kilian, Victor
 
-## Description du projet
+## Description
 
-Ce projet calcule l'aire sous la courbe d'une fonction polynomiale de 3ᵉ ordre
+Le programme calcule l'aire sous la courbe d'un polynôme de 3ᵉ ordre
 
-$$f(x) = p_1 + p_2 x + p_3 x^2 + p_4 x^3$$
+$$f(x) = a + b\,x + c\,x^2 + d\,x^3$$
 
-à l'aide de plusieurs méthodes d'intégration numérique, puis compare leur
-**précision** (erreur par rapport à la solution analytique) et leur
-**temps d'exécution**. L'objectif est de démontrer l'avantage de la
-vectorisation avec **NumPy** par rapport au Python de base.
+par plusieurs méthodes d'intégration numérique, puis compare leur **précision**
+(erreur par rapport à la solution analytique exacte) et leur **temps d'exécution**.
+Objectif : montrer le gain apporté par la vectorisation **NumPy** face au Python de base.
 
-Méthodes implémentées :
-- **Rectangles** (point milieu) — Python de base et NumPy
-- **Trapèzes** — Python de base et NumPy
-- **Simpson** — Python de base et NumPy
-- **Méthodes pré-programmées** (SciPy : `scipy.integrate`) — référence
-
-## Structure du projet
-A COMPLETER
-
-*(Adapter les noms de fichiers selon votre organisation finale.)*
+Méthodes : **rectangles**, **trapèzes** et **Simpson**, chacune codée en Python de base
+puis en NumPy, plus les versions pré-programmées de **SciPy** (`scipy.integrate`) comme référence.
 
 ## Prérequis
-
-- Python 3.x
-- `numpy`
-- `matplotlib`
-- `scipy`
-- `timeit`, `time` (bibliothèque standard)
-
-Installation des dépendances :
 
 ```bash
 pip install numpy matplotlib scipy
 ```
+
+(`timeit` et `time` font partie de la bibliothèque standard.)
 
 ## Utilisation
 
@@ -45,27 +30,32 @@ pip install numpy matplotlib scipy
 python main.py
 ```
 
-Le programme :
-1. fixe les paramètres du polynôme et les bornes d'intégration `[a, b]` ;
-2. calcule la solution analytique exacte ;
-3. applique chaque méthode d'intégration pour différents nombres de segments `n` ;
-4. mesure l'erreur et le temps d'exécution de chaque méthode ;
-5. affiche les graphiques de convergence et de performance.
+Le programme demande les coefficients `a, b, c, d` du polynôme et les bornes `[x_min, x_max]`,
+puis propose un menu :
 
-## Fonctions principales
+1. **Résultats des méthodes** (n = 100) — valeur de chaque méthode vs solution exacte
+2. **Graphiques** — convergence, temps de calcul et erreur par méthode (enregistrés en `.png`)
+3. **Temps Python vs NumPy** — tableau comparatif avec facteur d'accélération
+4. **Quitter**
 
-*(à compléter au fur et à mesure du développement)*
+## Structure des fichiers
 
-| Fonction | Rôle |
-|----------|------|
-| `solution_analytique(...)` | Calcule la valeur exacte de l'intégrale |
-| `rectangles_python(...)` / `rectangles_numpy(...)` | Méthode des rectangles |
-| `trapezes_python(...)` / `trapezes_numpy(...)` | Méthode des trapèzes |
-| `simpson_python(...)` / `simpson_numpy(...)` | Méthode de Simpson |
-| `erreur(...)` | Écart entre valeur numérique et valeur exacte |
+| Fichier | Contenu |
+|---------|---------|
+| `main.py` | Point d'entrée : saisie utilisateur et menu |
+| `moindre_rectangle.py` | Méthode des rectangles (Python et NumPy) |
+| `trapeze_python.py` / `trapeze_numpy.py` | Méthode des trapèzes |
+| `simpson.py` | Méthode de Simpson (Python et NumPy) |
+| `performance.py` | Solution analytique, calcul d'erreur, mesure du temps (`timeit`) |
+| `graph.py` | Méthodes SciPy et génération des 3 graphiques |
+
+Chaque méthode reçoit la fonction `f` en paramètre, les bornes et le nombre de segments `n`.
 
 ## Résultats
 
-*(à compléter : résumé des observations — impact du nombre de segments sur*
-*l'erreur et le temps, comparaison des méthodes, gain apporté par NumPy.*
-*Les graphiques détaillés et l'analyse se trouvent dans le rapport PDF.)*
+- L'erreur diminue quand `n` augmente (convergence) ; Simpson est exact pour un polynôme
+  de degré ≤ 3, son erreur reste au niveau de la précision machine.
+- Les versions **NumPy** sont environ **10 à 15× plus rapides** que le Python de base,
+  et l'écart grandit avec `n`.
+
+Analyse détaillée et graphiques dans le **rapport PDF**.
