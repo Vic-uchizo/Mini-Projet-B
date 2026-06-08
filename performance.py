@@ -1,7 +1,7 @@
 from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_numpy,calculer_simpson_python
-from moindre_rectangle import calculer_moindre_rectangle_numpy,calculer_moindre_rectangle_python, calculer_methode_analytique
+from moindre_rectangle import calculer_moindre_rectangle_numpy,calculer_moindre_rectangle_python
 from timeit import timeit
 import numpy as np
 import pandas as pd
@@ -21,6 +21,7 @@ def polynome(x):
     """Fonction a integrer : un polynome de 3e ordre."""
     return a + b * x + c * x**2 + d * x**3
 
+'''
 polynome.coeff=[a,b,c,d] #pour faciulement recuperer les coefficient dans les fonctions
 
 # Variables pour la boucle timeit
@@ -103,7 +104,7 @@ for n in range(1, 200):
     temps_simpson_numpy_list.append(temps * 1000)
     
     result_n_values.append(n)
-    
+
     
 
 # DataFrame pandas avec les résultats
@@ -127,7 +128,7 @@ df_temps = pd.DataFrame({
     'Temps Simpson Python (ms)': temps_simpson_python_list,
     'Temps Simpson NumPy (ms)': temps_simpson_numpy_list
 })
-
+'''
 
 
 def calculer_methode_analytique(f, inf, sup):
@@ -136,3 +137,7 @@ def calculer_methode_analytique(f, inf, sup):
     F_sup = a*sup + b*(sup**2)/2 + c*(sup**3)/3 + d*(sup**4)/4
     F_inf = a*inf + b*(inf**2)/2 + c*(inf**3)/3 + d*(inf**4)/4
     return F_sup - F_inf
+
+def mesurer_temps(fonction, x_min, x_max, polynome, n):
+    temps = timeit(lambda: fonction(x_min, x_max, polynome, n), number=100)    
+    return temps

@@ -6,8 +6,9 @@
 from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
-from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy,calculer_methode_analytique
+from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy
 from graph import tracer_tous_les_graphiques
+from performance import calculer_methode_analytique
 
 
 # -----------------------------------------------------------------------------

@@ -15,16 +15,13 @@ import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid, simpson
 
 # Mesure du temps : on reutilise la fonction du fichier du collegue.
-from performance import calculer_methode_analytique
+from performance import calculer_methode_analytique, mesurer_temps
 
 # On reutilise les fonctions deja codees dans les autres fichiers.
 from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
-from moindre_rectangle import (
-    calculer_moindre_rectangle_python,
-    calculer_moindre_rectangle_numpy
-)
+from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy
 
 
 # -----------------------------------------------------------------------------
@@ -38,6 +35,8 @@ def scipy_trapeze(inf, sup, f, n):
 def scipy_simpson(inf, sup, f, n):
     x = np.linspace(inf, sup, 2 * n + 1)  # nb impair de noeuds pour nombre paire d'intervalles 
     return simpson(f(x), x=x)
+
+
 
 
 # -----------------------------------------------------------------------------
