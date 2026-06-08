@@ -15,17 +15,13 @@ import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid, simpson
 
 # Mesure du temps : on reutilise la fonction du fichier du collegue.
-from performance import mesurer_temps
+from performance import calculer_methode_analytique, mesurer_temps
 
 # On reutilise les fonctions deja codees dans les autres fichiers.
 from trapeze_python import integrale_trapeze_python
 from trapeze_numpy import integrale_trapeze_numpy
 from simpson import calculer_simpson_python, calculer_simpson_numpy
-from moindre_rectangle import (
-    calculer_moindre_rectangle_python,
-    calculer_moindre_rectangle_numpy,
-    calculer_methode_analytique,
-)
+from moindre_rectangle import calculer_moindre_rectangle_python, calculer_moindre_rectangle_numpy
 
 
 # -----------------------------------------------------------------------------
@@ -39,6 +35,8 @@ def scipy_trapeze(inf, sup, f, n):
 def scipy_simpson(inf, sup, f, n):
     x = np.linspace(inf, sup, 2 * n + 1)  # nb impair de noeuds pour nombre paire d'intervalles 
     return simpson(f(x), x=x)
+
+
 
 
 # -----------------------------------------------------------------------------
@@ -67,8 +65,9 @@ def erreur(fonction, polynome, x_min, x_max, n):
     """Ecart absolu entre la methode et la valeur exacte, pour n segments."""
     exacte = calculer_methode_analytique(polynome, x_min, x_max)
     approx = fonction(x_min, x_max, polynome, n)
-    return abs(approx - exacte)
-
+    diff = abs(approx - exacte)
+    # Si la diff est inférieure à la précision machine, on la bloque à 1e-15
+    return max(diff, 1e-15)
 
 # =============================================================================
 # GRAPHIQUE 1 : Convergence (erreur en fonction de n)
