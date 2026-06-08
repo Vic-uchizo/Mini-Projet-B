@@ -6,7 +6,7 @@ from performance import polynome
 
 def menu_console():
     print("=" * 60)
-    print("        SIMULATION D'INTÉGRATION NUMÉRIQUE (CONSOLE)        ")
+    print("        SIMULATION D'INTÉGRATION NUMÉRIQUE        ")
     print("=" * 60)
     
     try:
@@ -17,8 +17,8 @@ def menu_console():
         c = int(input("-> Entez c : "))
         d = int(input("-> Entez d : "))
 
-        polynome.coeffs[a, b, c, d]
-        print(f"\nPolynôme configuré :\n{polynome}")
+        polynome.coeff=[a,b,c,d] # Pour facilement recuperer les coefficient dans les fonctions
+        print(f"\nPolynôme configuré :\n{polynome.coeff}")
         
         # 2. Saisie des bornes
         print("\nSaisie des bornes d'intégration :")
@@ -26,7 +26,7 @@ def menu_console():
         x_max = int(input("-> Borne maximale (x_max) : "))
         
         if x_min >= x_max:
-            print("❌ Erreur : x_min doit être inférieur à x_max.")
+            print("Erreur : x_min doit être inférieur à x_max.")
             return
 
         # 3. Boucle de choix d'action
@@ -41,7 +41,7 @@ def menu_console():
             if choix == "1":
                 n_test = 100
                 print(f"\nCalcul des erreurs absolues pour n = {n_test}...\n")
-                print(f"{'Méthode':<25} | {'Erreur Absolue':<15}")
+                print(f"{'Méthode':<25} | {'Résultat':<15}")
                 print("-" * 45)
                 for nom, fonction in methodes:
                     result = fonction(x_min, x_max, polynome, n_test)
@@ -55,10 +55,10 @@ def menu_console():
                 print("\nFin du programme. Bye !")
                 break
             else:
-                print("❌ Choix invalide, tape 1, 2 ou 3.")
+                print("Choix invalide, tape 1, 2 ou 3.")
 
     except ValueError:
-        print("❌ Erreur de saisie : assure-toi d'entrer des nombres valides.")
+        print("Erreur de saisie : assure-toi d'entrer des nombres valides.")
 
 if __name__ == "__main__":
     menu_console()

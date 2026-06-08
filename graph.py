@@ -129,5 +129,6 @@ def tracer_tous_les_graphiques(polynome, x_min, x_max):
     graphique_convergence(polynome, x_min, x_max)
     graphique_performance(polynome, x_min, x_max)
     graphique_erreur_par_methode(polynome, x_min, x_max)
+    print("Les échelles log sont plafonées à 10e-15 pour eviter d'avoir un '0' à l'infini")
     print("Termine.")
     plt.show()
