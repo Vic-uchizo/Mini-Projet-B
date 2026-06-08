@@ -1,17 +1,4 @@
-from trapeze_python import integrale_trapeze_python
-from trapeze_numpy import integrale_trapeze_numpy
-from simpson import calculer_simpson_numpy,calculer_simpson_python
-from moindre_rectangle import calculer_moindre_rectangle_numpy,calculer_moindre_rectangle_python
 from timeit import timeit
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import time
-
-
-def polynome(x):
-    """Fonction a integrer : un polynome de 3e ordre."""
-    return a + b * x + c * x**2 + d * x**3
 
 def calculer_methode_analytique(f, inf, sup):
     """Valeur exacte de l'integrale du polynome a + b*x + c*x^2 + d*x^3."""

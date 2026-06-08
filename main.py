@@ -1,8 +1,6 @@
-import numpy as np
+from graph import tracer_tous_les_graphiques, methodes
+from performance import calculer_methode_analytique
 
-# On importe tes fonctions (ajuste le nom du fichier si nécessaire)
-from graph import tracer_tous_les_graphiques, methodes, erreur
-from performance import polynome
 
 def menu_console():
     print("=" * 60)
@@ -17,9 +15,12 @@ def menu_console():
         c = int(input("-> Entez c : "))
         d = int(input("-> Entez d : "))
 
-        poly = [a,b,c,d] # Pour facilement recuperer les coefficient dans les fonctions
-        print(f"\nPolynôme configuré :\n{poly}")
+        def polynome(x):
+            """Fonction a integrer : un polynome de 3e ordre."""
+            return a + b * x + c * x**2 + d * x**3
         
+        polynome.coeff = [a,b,c,d] # Pour facilement recuperer les coefficient dans les fonctions
+
         # 2. Saisie des bornes
         print("\nSaisie des bornes d'intégration :")
         x_min = int(input("-> Borne minimale (x_min) : "))
@@ -40,7 +41,8 @@ def menu_console():
 
             if choix == "1":
                 n_test = 100
-                print(f"\nCalcul des erreurs absolues pour n = {n_test}...\n")
+                print(f"\nCalcul des resultats pour n = {n_test}...\n")
+                print(f"Résultat parfait : {calculer_methode_analytique(polynome, x_min, x_max):.2e} \n")
                 print(f"{'Méthode':<25} | {'Résultat':<15}")
                 print("-" * 45)
                 for nom, fonction in methodes:
