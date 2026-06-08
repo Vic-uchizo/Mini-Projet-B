@@ -78,7 +78,8 @@ def graphique_convergence(polynome, x_min, x_max):
 def graphique_performance(polynome, x_min, x_max):
     plt.figure(figsize=(9, 6))
     for nom, fonction in methodes:
-        temps_mesures = [mesurer_temps(fonction, x_min, x_max, polynome, n) for n in liste_n]
+        # mesurer_temps renvoie des secondes ; on convertit en ms pour l'affichage
+        temps_mesures = [mesurer_temps(fonction, x_min, x_max, polynome, n) * 1000 for n in liste_n]
         plt.plot(liste_n, temps_mesures, marker="o", label=nom)
 
     plt.xscale("log")
