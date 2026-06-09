@@ -8,21 +8,19 @@ def calculer_moindre_rectangle_python(inf, sup, f, n):
     """Integrale de f sur [inf, sup] par la methode des rectangles."""
     largeur_segment = (sup - inf) / n
     Aire_rectangle_tot = 0
-    i = inf
-    while i < sup:
-        hauteur_segment = (f(i) + f(i + largeur_segment)) / 2
+    for i in range(n):
+        borne=inf+i*largeur_segment
+        hauteur_segment = (f(borne + largeur_segment/ 2)) 
         Aire_rectangle_tot += largeur_segment * hauteur_segment
-        i = i + largeur_segment
     return Aire_rectangle_tot
 
 
 def calculer_moindre_rectangle_numpy(inf,sup,f,n):
     # Créer les points x entre inf et sup
     largeur_segment = (sup - inf)/n
-    valeur_x = np.linspace(inf, sup, n+1)
+    valeur_x = np.linspace(inf+largeur_segment/2, sup-largeur_segment/2, n)
     valeur_y = f(valeur_x)
-    hauteur_segment = (valeur_y[:-1] + valeur_y[1:]) / 2 # Calculer la hauteur moyenne de chaque rectangle
     # Calculer l'aire totale
-    aire_totale = np.sum(hauteur_segment * largeur_segment)
+    aire_totale = np.sum(valeur_y * largeur_segment)
     
     return aire_totale
